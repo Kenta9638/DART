@@ -189,7 +189,7 @@ logical  :: output_timestamps        = .false.
 logical  :: trace_execution          = .false.
 logical  :: write_obs_every_cycle    = .false.  ! debug only
 logical  :: silence                  = .false.
-logical  :: distributed_state = .true. ! Default to do state complete forward operators.
+logical  :: distributed_state = .true. ! Default to do distributed forward operators.
 
 ! IO options
 !>@todo FIXME - how does this work for multiple domains?  ens1d1, ens2d1, ... ens1d2 or
@@ -942,7 +942,7 @@ AdvanceTime : do
    endif
 
    ! Already transformed, so compute mean and spread for state diag as needed
-!   call compute_copy_mean_sd(state_ens_handle, 1, ens_size, ENS_MEAN_COPY, ENS_SD_COPY) KKUROSAWA
+   call compute_copy_mean_sd(state_ens_handle, 1, ens_size, ENS_MEAN_COPY, ENS_SD_COPY)
 
    ! This block applies posterior inflation
 
